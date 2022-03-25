@@ -4,24 +4,29 @@ let by = 0;
 ball.style.left = bx + "%";
 let racket = document.querySelector("#racket");
 let rx=40;
-scoreBox = document.querySelector("#score")
-score = 0;
-
+let scoreBox = document.querySelector("#score")
+let score = 0;
+let speedInput = document.querySelector("#speed")
+let speed = speedInput.value
+console.log(speed)
 
 function randby(){
     bx = Math.floor(Math.random()*90 + 5)
 }
+
 setInterval(()=>{
     if (by>=90 && bx>rx-5 && bx<rx+20){
         hit()
     }
     update()
 },10)
+
 function update() {
+    speed = speedInput.value
     if (by==0){
         randby()
     }
-    by = by+0.5
+    by = by+speed*0.1
     by=by%95
     ball.style.left = bx + "%"
     ball.style.top = by + "%"
